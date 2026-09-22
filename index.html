@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Happy 4 Months ♡</title>
 
 <style>
@@ -15,60 +14,58 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Times New Roman", "Hiragino Mincho ProN", serif;
-  background:
-    linear-gradient(rgba(255,245,247,0.82), rgba(255,245,247,0.82)),
-    radial-gradient(circle at 20% 20%, #ffd9e3, transparent 35%),
-    radial-gradient(circle at 80% 80%, #dcecff, transparent 35%);
   color: #70545b;
+  background:
+    radial-gradient(circle at 15% 15%, #ffe0e8, transparent 35%),
+    radial-gradient(circle at 85% 85%, #e4edff, transparent 35%),
+    #fff7f8;
   overflow-x: hidden;
-}
-
-.screen {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 18px;
 }
 
 .hidden {
   display: none !important;
 }
 
-/* --------------------
-   LOCK SCREEN
--------------------- */
+/* =====================
+   PASSWORD
+===================== */
+
+#lockScreen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
 
 .lock-box {
   width: 100%;
   max-width: 380px;
   text-align: center;
   padding: 45px 25px;
+  background: rgba(255,255,255,.72);
   border-radius: 25px;
-  background: rgba(255,255,255,0.68);
-  box-shadow: 0 10px 40px rgba(180,120,140,0.18);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 40px rgba(180,120,140,.18);
 }
 
 .small-title {
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 3px;
   color: #b47d8c;
-  margin-bottom: 12px;
 }
 
 .lock-box h1 {
   font-size: 32px;
   font-weight: normal;
   color: #bd7187;
-  margin: 5px 0 10px;
+  margin: 10px 0;
 }
 
 .date {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 3px;
   color: #9b777f;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .lock-icon {
@@ -79,7 +76,6 @@ body {
 .hint {
   font-size: 13px;
   margin-bottom: 10px;
-  color: #9b777f;
 }
 
 input {
@@ -90,7 +86,7 @@ input {
   text-align: center;
   font-size: 20px;
   letter-spacing: 5px;
-  background: rgba(255,255,255,0.8);
+  background: white;
   outline: none;
   color: #76535c;
 }
@@ -98,20 +94,14 @@ input {
 .unlock-btn,
 .play-btn {
   margin-top: 20px;
-  padding: 14px 32px;
+  padding: 13px 30px;
   border: none;
   border-radius: 30px;
   background: #e995ad;
   color: white;
   font-size: 14px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(210,120,145,0.25);
-}
-
-.unlock-btn:active,
-.play-btn:active {
-  transform: scale(0.96);
 }
 
 .error {
@@ -120,14 +110,14 @@ input {
   margin-top: 12px;
 }
 
-/* --------------------
+/* =====================
    MAIN
--------------------- */
+===================== */
 
 #main {
   display: none;
   min-height: 100vh;
-  padding: 55px 18px 80px;
+  padding: 55px 18px 70px;
   text-align: center;
 }
 
@@ -135,71 +125,30 @@ input {
   font-size: 38px;
   font-weight: normal;
   color: #bd7187;
-  margin-bottom: 5px;
-  letter-spacing: 1px;
+  margin: 0 0 5px;
 }
 
 .main-date {
   font-size: 12px;
   letter-spacing: 4px;
   color: #a47b84;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 }
 
-/* --------------------
-   MUSIC
--------------------- */
-
-.music-box {
-  width: 100%;
-  max-width: 380px;
-  margin: 0 auto 35px;
-  padding: 18px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.72);
-  box-shadow: 0 8px 25px rgba(180,120,140,0.14);
-}
-
-.music-title {
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #9b6877;
-  margin-bottom: 12px;
-}
-
-#youtubePlayer {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 15px;
-  border: none;
-}
-
-.play-note {
-  font-size: 12px;
-  color: #a17b84;
-  margin-top: 10px;
-}
-
-.play-btn {
-  margin-top: 10px;
-  padding: 10px 22px;
-}
-
-/* --------------------
+/* =====================
    LETTER
--------------------- */
+===================== */
 
 .letter-wrapper {
-  width: 100%;
   max-width: 390px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .letter {
   position: relative;
   max-height: 520px;
   overflow-y: auto;
-  padding: 42px 25px 50px;
+  padding: 55px 24px 40px;
   text-align: left;
 
   background:
@@ -207,85 +156,94 @@ input {
       to bottom,
       #fffdf7 0px,
       #fffdf7 31px,
-      #f1dfe2 32px,
+      #efdfe2 32px,
       #fffdf7 33px
     );
 
   border: 1px solid #ead1d4;
+
   box-shadow:
-    0 8px 25px rgba(150,100,110,0.14),
-    inset 0 0 25px rgba(230,190,190,0.12);
+    0 8px 25px rgba(150,100,110,.14),
+    inset 0 0 25px rgba(230,190,190,.12);
 
   transform: rotate(-0.5deg);
 }
 
-/* paper corners */
-
 .letter::before {
+  content: "Dear Kai ♡";
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 17px;
+  font-style: italic;
+  color: #8f6c73;
+}
+
+.letter::after {
   content: "♡";
   position: absolute;
   top: 12px;
   right: 18px;
-  color: #e6a0af;
   font-size: 23px;
-}
-
-.letter::after {
-  content: "Dear Kai ♡";
-  position: absolute;
-  top: 15px;
-  left: 25px;
-  color: #8f6c73;
-  font-size: 17px;
-  font-style: italic;
+  color: #e6a0af;
 }
 
 .letter p {
   margin: 0 0 25px;
   font-size: 15px;
   line-height: 2.15;
-  color: #69545a;
+}
+
+.signature {
+  color: #bd7187;
+  font-style: italic;
+  font-size: 21px !important;
 }
 
 .scroll-hint {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: #b88894;
-  margin-top: 20px;
   letter-spacing: 2px;
 }
 
-/* --------------------
-   LYRICS
--------------------- */
+/* =====================
+   MUSIC + LYRICS
+===================== */
 
-.lyrics {
-  max-width: 380px;
-  margin: 60px auto 30px;
-  padding: 40px 25px;
+.song-box {
+  max-width: 390px;
+  margin: 55px auto 0;
+  padding: 35px 22px;
 
-  background: rgba(255,255,255,0.58);
-  border-radius: 20px;
-  border: 1px solid rgba(220,170,180,0.35);
+  background: rgba(255,255,255,.68);
+  border: 1px solid rgba(220,170,180,.35);
+  border-radius: 22px;
+
+  box-shadow: 0 8px 25px rgba(180,120,140,.12);
 }
 
-.lyrics-title {
-  font-size: 18px;
+.song-title {
+  font-size: 19px;
   color: #bd7187;
   font-style: italic;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
+}
+
+.play-btn {
+  margin: 0 0 25px;
 }
 
 .lyric-line {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(12px);
+  transition: all 1.2s ease;
 
-  margin: 22px 0;
+  margin: 23px 0;
   font-size: 15px;
   line-height: 1.8;
-  color: #765c64;
   font-style: italic;
+  color: #765c64;
 }
 
 .lyric-line.show {
@@ -293,40 +251,15 @@ input {
   transform: translateY(0);
 }
 
-.lyrics-heart {
-  margin-top: 25px;
-  color: #df8fa4;
+.song-heart {
+  margin-top: 28px;
   font-size: 20px;
+  color: #df8fa4;
 }
 
-/* --------------------
-   END
--------------------- */
-
-.final-message {
-  margin: 65px auto 25px;
-  max-width: 380px;
-  color: #86666e;
-}
-
-.final-message h2 {
-  font-size: 27px;
-  font-weight: normal;
-  color: #bd7187;
-  margin-bottom: 25px;
-}
-
-.final-message p {
-  line-height: 2;
-  font-size: 14px;
-}
-
-.signature {
-  margin-top: 30px;
-  font-size: 22px !important;
-  font-style: italic;
-  color: #bd7187;
-}
+/* =====================
+   FOOTER
+===================== */
 
 .footer {
   margin-top: 55px;
@@ -335,33 +268,29 @@ input {
   color: #b0848d;
 }
 
-/* --------------------
+/* =====================
    HEARTS
--------------------- */
+===================== */
 
 .heart {
   position: fixed;
   bottom: -30px;
   pointer-events: none;
-  animation: floatUp linear forwards;
   z-index: 100;
+  animation: floatUp linear forwards;
 }
 
 @keyframes floatUp {
-  0% {
-    transform: translateY(0) rotate(0deg);
+  from {
+    transform: translateY(0) rotate(0);
     opacity: 1;
   }
 
-  100% {
+  to {
     transform: translateY(-110vh) rotate(30deg);
     opacity: 0;
   }
 }
-
-/* --------------------
-   MOBILE
--------------------- */
 
 @media (max-width: 480px) {
   .main-title {
@@ -381,13 +310,14 @@ input {
 </style>
 </head>
 
+
 <body>
 
-<!-- ====================
-     PASSWORD SCREEN
+<!-- =====================
+     PASSWORD
 ===================== -->
 
-<div id="lockScreen" class="screen">
+<div id="lockScreen">
 
   <div class="lock-box">
 
@@ -417,8 +347,6 @@ input {
       placeholder="••••"
     >
 
-    <br>
-
     <button class="unlock-btn" onclick="unlock()">
       UNLOCK ♡
     </button>
@@ -430,8 +358,8 @@ input {
 </div>
 
 
-<!-- ====================
-     MAIN PAGE
+<!-- =====================
+     MAIN
 ===================== -->
 
 <div id="main">
@@ -442,33 +370,6 @@ input {
 
   <div class="main-date">
     23 SEPTEMBER 2026
-  </div>
-
-
-  <!-- MUSIC -->
-
-  <div class="music-box">
-
-    <div class="music-title">
-      ♡ Our song is playing ♡
-    </div>
-
-    <iframe
-      id="youtubePlayer"
-      src=""
-      title="Nothing's Gonna Change My Love For You"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-
-    <div class="play-note">
-      If the music doesn't start automatically...
-    </div>
-
-    <button class="play-btn" onclick="playSong()">
-      ▶ Play our song ♡
-    </button>
-
   </div>
 
 
@@ -540,13 +441,25 @@ input {
   </div>
 
 
-  <!-- LYRICS -->
+  <!-- MUSIC + LYRICS -->
 
-  <div class="lyrics">
+  <div class="song-box">
 
-    <div class="lyrics-title">
+    <div class="song-title">
       ♡ A little song for you ♡
     </div>
+
+    <audio id="song" preload="auto">
+      <source src="anniversary_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button
+      id="playButton"
+      class="play-btn"
+      onclick="playSong()"
+    >
+      ▶ Play our song ♡
+    </button>
 
     <div class="lyric-line">
       Nothing's gonna change my love for you
@@ -564,31 +477,12 @@ input {
       I'll never ask for more than your love
     </div>
 
-    <div class="lyrics-heart">
+    <div class="song-heart">
       ♡
     </div>
 
   </div>
 
-
-  <!-- FINAL -->
-
-  <div class="final-message">
-
-    <h2>
-      Happy 4 Months, Kai ♡
-    </h2>
-
-    <p>
-      これからもよろしくね。<br>
-      遠距離なんかに負けないぞー！
-    </p>
-
-    <p class="signature">
-      I love you ♡
-    </p>
-
-  </div>
 
   <div class="footer">
     distance can't stop us ♡
@@ -599,8 +493,11 @@ input {
 
 <script>
 
-/* ====================
-   PASSWORD
+const song = document.getElementById("song");
+
+
+/* =====================
+   UNLOCK
 ===================== */
 
 function unlock() {
@@ -616,17 +513,25 @@ function unlock() {
 
     setTimeout(() => {
 
-      document.getElementById("lockScreen")
+      document
+        .getElementById("lockScreen")
         .classList.add("hidden");
 
-      document.getElementById("main")
+      document
+        .getElementById("main")
         .style.display = "block";
 
-      startMusic();
+      /*
+        Unlockボタンを押した直後なので、
+        ブラウザの自動再生制限に
+        引っかかりにくいタイミングで再生。
+      */
+
+      playSong();
 
       startLyrics();
 
-    }, 1000);
+    }, 700);
 
   } else {
 
@@ -638,33 +543,30 @@ function unlock() {
 }
 
 
-/* ====================
+/* =====================
    MUSIC
 ===================== */
 
-function startMusic() {
-
-  const player =
-    document.getElementById("youtubePlayer");
-
-  player.src =
-    "https://www.youtube.com/embed/4tf0ZjN1UPE?autoplay=1&playsinline=1&rel=0";
-
-}
-
-
 function playSong() {
 
-  const player =
-    document.getElementById("youtubePlayer");
+  song.play()
+    .then(() => {
 
-  player.src =
-    "https://www.youtube.com/embed/4tf0ZjN1UPE?autoplay=1&playsinline=1&rel=0";
+      document.getElementById("playButton")
+        .textContent = "♫ Playing our song ♡";
+
+    })
+    .catch(() => {
+
+      document.getElementById("playButton")
+        .textContent = "▶ Play our song ♡";
+
+    });
 
 }
 
 
-/* ====================
+/* =====================
    LYRICS
 ===================== */
 
@@ -679,14 +581,14 @@ function startLyrics() {
 
       line.classList.add("show");
 
-    }, index * 2200 + 1000);
+    }, 1200 + index * 2200);
 
   });
 
 }
 
 
-/* ====================
+/* =====================
    HEARTS
 ===================== */
 
@@ -697,7 +599,13 @@ function createHeart() {
 
   heart.className = "heart";
 
-  const hearts = ["♡", "♥", "💕", "💗", "💖"];
+  const hearts = [
+    "♡",
+    "♥",
+    "💕",
+    "💗",
+    "💖"
+  ];
 
   heart.textContent =
     hearts[Math.floor(Math.random() * hearts.length)];
