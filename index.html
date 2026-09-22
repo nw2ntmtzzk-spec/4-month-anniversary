@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ♡</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe6ef, #fff5f8);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  color: #6b4050;
+  overflow: hidden;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.card {
+  max-width: 420px;
+  width: 100%;
+}
+
+.small {
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #d66a8b;
+}
+
+.message {
+  font-size: 17px;
+  line-height: 2;
+  margin: 25px 0;
+}
+
+.heart {
+  border: none;
+  background: none;
+  font-size: 90px;
+  cursor: pointer;
+  animation: heartbeat 1.4s infinite;
+  filter: drop-shadow(0 8px 10px rgba(200,100,130,.2));
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.music {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 13px 25px;
+  border-radius: 30px;
+  background: #d66a8b;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 6px 15px rgba(200,100,130,.25);
+}
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 22px;
+  animation: float 3s linear forwards;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.fade {
+  animation: fadein 1.5s ease;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="screen" id="start">
+  <div class="card">
+    <div class="small">I HAVE A LITTLE SURPRISE FOR YOU ♡</div>
+
+    <button class="heart" onclick="openLetter()">💗</button>
+
+    <p>tap the heart</p>
+  </div>
+</div>
+
+<div class="screen hidden" id="letter">
+  <div class="card fade">
+
+    <div class="small">22 SEPTEMBER 2026</div>
+
+    <h1>Happy 4 Months ♡</h1>
+
+    <div class="message">
+      4 months already 🥹💕<br><br>
+
+      Even though we're far apart right now,<br>
+      I'm really happy that you're still<br>
+      such an important part of my everyday life.<br><br>
+
+      Thank you for always making me smile<br>
+      and for being there for me.<br><br>
+
+      I can't wait until we can see each other again.<br>
+      I love you ♡
+    </div>
+
+    <a class="music"
+       href="YOUR_YOUTUBE_LINK_HERE"
+       target="_blank">
+       🎵 A song for you
+    </a>
+
+    <p style="margin-top:30px; font-size:14px;">
+      distance can't stop us ♡
+    </p>
+
+  </div>
+</div>
+
+<script>
+function openLetter() {
+
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("letter").classList.remove("hidden");
+
+  for (let i = 0; i < 30; i++) {
+    setTimeout(createHeart, i * 80);
+  }
+}
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+
+  const hearts = ["💗","💕","💖","💓","♡","✨"];
+  heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = (80 + Math.random() * 20) + "vh";
+  heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+
+  document.getElementById("hearts").appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
