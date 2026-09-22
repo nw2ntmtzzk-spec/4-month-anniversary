@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For You ♡</title>
 
 <style>
@@ -13,195 +14,321 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffe6ef, #fff5f8);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  color: #6b4050;
-  overflow: hidden;
+  background: linear-gradient(135deg, #fff0f5, #ffe4ed);
+  color: #633b4d;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-.screen {
+.container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 30px;
+  padding: 30px 20px;
 }
 
 .card {
-  max-width: 420px;
   width: 100%;
-}
-
-.small {
-  font-size: 15px;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
+  max-width: 600px;
 }
 
 h1 {
-  font-size: 36px;
-  margin: 10px 0;
-  color: #d66a8b;
+  color: #d45b82;
+  font-size: 42px;
+  margin-bottom: 25px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.lock {
+  font-size: 70px;
+  margin: 15px 0;
+}
+
+input {
+  width: 180px;
+  padding: 14px;
+  border: 2px solid #e58aaa;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 6px;
+  outline: none;
+  background: white;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.unlock-btn {
+  display: block;
+  margin: 18px auto;
+  padding: 14px 32px;
+  border-radius: 30px;
+  background: #d45b82;
+  color: white;
+  box-shadow: 0 6px 15px rgba(190, 80, 120, 0.25);
+}
+
+.hint {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #916273;
 }
 
 .message {
-  font-size: 17px;
-  line-height: 2;
-  margin: 25px 0;
-}
-
-.heart {
-  border: none;
-  background: none;
-  font-size: 90px;
-  cursor: pointer;
-  animation: heartbeat 1.4s infinite;
-  filter: drop-shadow(0 8px 10px rgba(200,100,130,.2));
-}
-
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-}
-
-.hidden {
   display: none;
+  animation: fadeIn 1.5s ease;
 }
 
-.music {
+.date {
+  font-size: 17px;
+  letter-spacing: 5px;
+  margin-bottom: 35px;
+}
+
+.message h1 {
+  font-size: 46px;
+}
+
+.message p {
+  font-size: 20px;
+  line-height: 1.9;
+  margin: 28px 0;
+}
+
+.song {
   display: inline-block;
-  margin-top: 15px;
-  padding: 13px 25px;
-  border-radius: 30px;
-  background: #d66a8b;
+  margin-top: 20px;
+  padding: 17px 35px;
+  border-radius: 35px;
+  background: #d45b82;
   color: white;
   text-decoration: none;
-  font-size: 15px;
-  box-shadow: 0 6px 15px rgba(200,100,130,.25);
+  font-size: 18px;
+  box-shadow: 0 7px 18px rgba(190, 80, 120, 0.3);
 }
 
-#hearts {
+.small {
+  margin-top: 35px;
+  font-size: 16px;
+}
+
+/* floating hearts */
+.heart {
   position: fixed;
-  inset: 0;
+  bottom: -30px;
   pointer-events: none;
+  animation: floatUp linear forwards;
+  z-index: 100;
 }
 
-.floating-heart {
-  position: absolute;
-  font-size: 22px;
-  animation: float 3s linear forwards;
-}
-
-@keyframes float {
-  from {
+@keyframes floatUp {
+  0% {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
   }
-  to {
-    transform: translateY(-100vh) rotate(360deg);
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
     opacity: 0;
   }
 }
 
-.fade {
-  animation: fadein 1.5s ease;
-}
-
-@keyframes fadein {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.error {
+  color: #d45b82;
+  font-size: 14px;
+  min-height: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<div id="hearts"></div>
+<div class="container">
 
-<div class="screen" id="start">
-  <div class="card">
-    <div class="small">I HAVE A LITTLE SURPRISE FOR YOU ♡</div>
+  <!-- LOCK SCREEN -->
+  <div class="card" id="lockScreen">
 
-    <button class="heart" onclick="openLetter()">💗</button>
+    <div class="lock" id="lock">🔒</div>
 
-    <p>tap the heart</p>
-  </div>
-</div>
+    <h1>A little surprise for you ♡</h1>
 
-<div class="screen hidden" id="letter">
-  <div class="card fade">
-
-    <div class="small">22 SEPTEMBER 2026</div>
-
-    <h1>Happy 4 Months ♡</h1>
-
-    <div class="message">
-      4 months already 🥹💕<br><br>
-
-      Even though we're far apart right now,<br>
-      I'm really happy that you're still<br>
-      such an important part of my everyday life.<br><br>
-
-      Thank you for always making me smile<br>
-      and for being there for me.<br><br>
-
-      I can't wait until we can see each other again.<br>
-      I love you ♡
+    <div class="subtitle">
+      Enter the password to unlock 💕
     </div>
 
-    <a class="music"
-       href="YOUR_YOUTUBE_LINK_HERE"
-       target="_blank">
-       🎵 A song for you
-    </a>
+    <input
+      id="password"
+      type="password"
+      inputmode="numeric"
+      maxlength="4"
+      placeholder="••••"
+    >
 
-    <p style="margin-top:30px; font-size:14px;">
-      distance can't stop us ♡
-    </p>
+    <button class="unlock-btn" onclick="unlock()">
+      UNLOCK ♡
+    </button>
+
+    <div class="error" id="error"></div>
+
+    <div class="hint">
+      💡 Hint: When is our 4-month anniversary?
+    </div>
 
   </div>
+
+
+  <!-- MESSAGE -->
+  <div class="card message" id="message">
+
+    <div class="date">
+      23 SEPTEMBER 2026
+    </div>
+
+    <h1>
+      Happy 4 Months ♡
+    </h1>
+
+    <p>
+      4 months already 🥹💕
+    </p>
+
+    <p>
+      Even though we're far apart right now,<br>
+      I'm really happy that you're still<br>
+      such an important part of my everyday life.
+    </p>
+
+    <p>
+      Thank you for always making me smile<br>
+      and for being there for me.
+    </p>
+
+    <p>
+      I can't wait until we can see each other again.
+    </p>
+
+    <p>
+      I love you ♡
+    </p>
+
+    <a
+      class="song"
+      href="https://www.youtube.com/results?search_query=Nothing%27s+Gonna+Change+My+Love+for+You"
+      target="_blank"
+    >
+      🎵 Nothing's Gonna Change My Love for You
+    </a>
+
+    <div class="small">
+      distance can't stop us ♡
+    </div>
+
+  </div>
+
 </div>
 
+
 <script>
-function openLetter() {
 
-  document.getElementById("start").classList.add("hidden");
-  document.getElementById("letter").classList.remove("hidden");
+function unlock() {
 
-  for (let i = 0; i < 30; i++) {
-    setTimeout(createHeart, i * 80);
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+  const lock = document.getElementById("lock");
+
+  if (password === "0923") {
+
+    // unlock animation
+    lock.innerHTML = "🔓";
+
+    // LOTS OF HEARTS 💗
+    for (let i = 0; i < 70; i++) {
+      setTimeout(() => {
+        createHeart();
+      }, i * 45);
+    }
+
+    setTimeout(() => {
+
+      document.getElementById("lockScreen").style.display = "none";
+      document.getElementById("message").style.display = "block";
+
+      // more hearts after opening
+      setInterval(createHeart, 350);
+
+    }, 900);
+
+  } else {
+
+    error.innerHTML = "Hmm... try again 💭";
+
+    document.getElementById("password").classList.add("shake");
+
+    setTimeout(() => {
+      document.getElementById("password").classList.remove("shake");
+    }, 400);
   }
 }
+
 
 function createHeart() {
 
   const heart = document.createElement("div");
-  heart.className = "floating-heart";
 
-  const hearts = ["💗","💕","💖","💓","♡","✨"];
-  heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+  const hearts = ["💗", "💕", "💖", "💓", "💘", "💞", "💝"];
+
+  heart.innerHTML =
+    hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.className = "heart";
 
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.top = (80 + Math.random() * 20) + "vh";
-  heart.style.animationDuration = (2 + Math.random() * 2) + "s";
 
-  document.getElementById("hearts").appendChild(heart);
+  heart.style.fontSize =
+    (18 + Math.random() * 25) + "px";
+
+  heart.style.animationDuration =
+    (3 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 4000);
+  }, 7000);
 }
+
 </script>
 
 </body>
