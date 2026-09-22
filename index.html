@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For You ♡</title>
 
 <style>
@@ -14,10 +13,9 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: linear-gradient(135deg, #ffe6ef, #fff5f8);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  background: linear-gradient(135deg, #fff0f5, #ffe4ed);
-  color: #633b4d;
-  text-align: center;
+  color: #6b4050;
   overflow-x: hidden;
 }
 
@@ -32,6 +30,7 @@ body {
 .card {
   width: 100%;
   max-width: 600px;
+  text-align: center;
 }
 
 h1 {
@@ -62,26 +61,28 @@ input {
   background: white;
 }
 
-button {
-  border: none;
-  cursor: pointer;
-  font-size: 17px;
-}
-
 .unlock-btn {
   display: block;
   margin: 18px auto;
   padding: 14px 32px;
+  border: none;
   border-radius: 30px;
   background: #d45b82;
   color: white;
-  box-shadow: 0 6px 15px rgba(190, 80, 120, 0.25);
+  font-size: 17px;
+  box-shadow: 0 6px 15px rgba(190,80,120,0.25);
 }
 
 .hint {
   margin-top: 25px;
   font-size: 14px;
   color: #916273;
+}
+
+.error {
+  color: #d45b82;
+  font-size: 14px;
+  min-height: 20px;
 }
 
 .message {
@@ -114,7 +115,7 @@ button {
   color: white;
   text-decoration: none;
   font-size: 18px;
-  box-shadow: 0 7px 18px rgba(190, 80, 120, 0.3);
+  box-shadow: 0 7px 18px rgba(190,80,120,0.3);
 }
 
 .small {
@@ -122,7 +123,6 @@ button {
   font-size: 16px;
 }
 
-/* floating hearts */
 .heart {
   position: fixed;
   bottom: -30px;
@@ -160,15 +160,17 @@ button {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
-}
+  0%, 100% {
+    transform: translateX(0);
+  }
 
-.error {
-  color: #d45b82;
-  font-size: 14px;
-  min-height: 20px;
+  25% {
+    transform: translateX(-8px);
+  }
+
+  75% {
+    transform: translateX(8px);
+  }
 }
 </style>
 </head>
@@ -177,7 +179,6 @@ button {
 
 <div class="container">
 
-  <!-- LOCK SCREEN -->
   <div class="card" id="lockScreen">
 
     <div class="lock" id="lock">🔒</div>
@@ -209,7 +210,6 @@ button {
   </div>
 
 
-  <!-- MESSAGE -->
   <div class="card message" id="message">
 
     <div class="date">
@@ -270,10 +270,8 @@ function unlock() {
 
   if (password === "0923") {
 
-    // unlock animation
     lock.innerHTML = "🔓";
 
-    // LOTS OF HEARTS 💗
     for (let i = 0; i < 70; i++) {
       setTimeout(() => {
         createHeart();
@@ -285,7 +283,6 @@ function unlock() {
       document.getElementById("lockScreen").style.display = "none";
       document.getElementById("message").style.display = "block";
 
-      // more hearts after opening
       setInterval(createHeart, 350);
 
     }, 900);
